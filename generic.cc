@@ -35,7 +35,14 @@ int main(int argc, char* argv[]) try {
   out->flush();
 
   // Decode the file.
-  std::unique_ptr<avro::InputStream> in = avro::fileInputStream("test.bin");
+
+  std::ifstream f("test.bin",std::ios::binary);
+  std::stringstream s;
+  if (f) {
+      s << f.rdbuf();    
+      f.close();
+  }  
+  std::unique_ptr<avro::InputStream> in = avro::istreamInputStream(s);
   avro::DecoderPtr d = avro::validatingDecoder(schema, avro::binaryDecoder());
   d->init(*in);
 
@@ -56,7 +63,7 @@ int main(int argc, char* argv[]) try {
           }
       }
   }
-  
+
   return 0; 
 } catch (const std::exception& error) {
   std::cout << error.what() << std::endl;
