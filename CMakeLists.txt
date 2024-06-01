@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.20)
+set(CMAKE_CXX_STANDARD 14)
 
 # Define the project name and where to report bugs.
 set(PACKAGE_BUGREPORT
@@ -24,7 +25,11 @@ endmacro (run_avro_compiler)
 run_avro_compiler(schema v1)
 
 add_executable(quickstart quickstart.cc schema.h)
-target_compile_features(quickstart PRIVATE cxx_std_14)
 target_include_directories(quickstart PRIVATE SYSTEM
                                               "${CMAKE_CURRENT_BINARY_DIR}")
 target_link_libraries(quickstart PRIVATE unofficial::avro-cpp::avrocpp)
+
+add_executable(generic generic.cc schema.h)
+target_include_directories(generic PRIVATE SYSTEM
+                                              "${CMAKE_CURRENT_BINARY_DIR}")
+target_link_libraries(generic PRIVATE unofficial::avro-cpp::avrocpp)
