@@ -1,0 +1,9 @@
+{
+  "name": "simple-avro-example",
+  "version-string": "unversioned",
+  "homepage": "https://github.com/alevenberg/simple-avro-example",
+  "description": "An example using the Avro library",
+  "dependencies": [
+    "avro-cpp"
+  ]
+}
