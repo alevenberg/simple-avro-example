@@ -8,4 +8,5 @@ cmake -S . -B .build -DCMAKE_TOOLCHAIN_FILE=$HOME/vcpkg/scripts/buildsystems/vcp
 cmake --build .build
 .build/quickstart schema.avro
 .build/generic schema.avro
+.build/generic_multiple schema.avro
 ```
