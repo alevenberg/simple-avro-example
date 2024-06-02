@@ -38,3 +38,8 @@ add_executable(generic_multiple generic_multiple.cc schema.h)
 target_include_directories(generic_multiple PRIVATE SYSTEM
                                               "${CMAKE_CURRENT_BINARY_DIR}")
 target_link_libraries(generic_multiple PRIVATE unofficial::avro-cpp::avrocpp)
+
+add_executable(generic_test generic_test.cc schema.h)
+target_include_directories(generic_test PRIVATE SYSTEM
+                                              "${CMAKE_CURRENT_BINARY_DIR}")
+target_link_libraries(generic_test PRIVATE unofficial::avro-cpp::avrocpp)
